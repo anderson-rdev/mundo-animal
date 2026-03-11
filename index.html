@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mundo Animal – Página Responsiva</title>
+
+  <!-- Fontes do Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Merriweather:ital,wght@0,700;1,300&display=swap" rel="stylesheet"/>
+
+  <!-- Arquivo CSS externo -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ============================
+       CABEÇALHO
+  ============================ -->
+  <header>
+    <h1>🦁 Mundo Animal</h1>
+    <p>Conheça os incríveis animais do nosso planeta</p>
+  </header>
+
+
+  <!-- ============================
+       DIV DESTAQUE
+       Faixa laranja acima dos 3 cards
+  ============================ -->
+  <div class="div-destaque">
+    <span class="icone">🌍</span>
+    <div>
+      <h2>A biodiversidade em risco</h2>
+      <p>Mais de 40.000 espécies estão ameaçadas de extinção. Conhecer é o primeiro passo para preservar.</p>
+    </div>
+  </div>
+
+
+  <!-- ============================
+       3 DIVS PRINCIPAIS
+       > 768px → lado a lado (row)
+       ≤ 768px → empilhadas (column)
+  ============================ -->
+  <main class="container-grid">
+
+    <!-- DIV 1 — Imagem + Texto: Leão -->
+    <div class="card">
+      <div class="card-img">
+        <img
+          src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=700&auto=format&fit=crop"
+          alt="Leão macho com juba dourada"
+        />
+        <span class="etiqueta">🦁 Mamífero</span>
+      </div>
+      <div class="card-body">
+        <h2>O Rei da Savana</h2>
+        <p>
+          O leão é o único felino verdadeiramente social, vivendo em grupos
+          chamados <strong>alcateias</strong>. As fêmeas são as principais
+          caçadoras, enquanto os machos protegem o território.
+        </p>
+        <p>
+          Encontrados principalmente na África Subsaariana, os leões podem
+          rugir a até <strong>8 km de distância</strong> — um dos sons mais
+          imponentes da natureza.
+        </p>
+        <span class="info-chip">📍 África e Ásia</span>
+        <span class="info-chip">⚠️ Vulnerável</span>
+      </div>
+    </div>
+
+
+    <!-- DIV 2 — Somente Texto: Curiosidades -->
+    <div class="card card-texto">
+      <div class="card-body">
+        <div class="numero-grande">8,7M</div>
+        <p class="subtitulo-stat">espécies estimadas na Terra</p>
+        <blockquote>
+          "Em cada ser vivo existe um universo inteiro esperando para ser descoberto."
+        </blockquote>
+        <ul class="lista-fatos">
+          <li>O polvo tem três corações e sangue azul</li>
+          <li>As abelhas se comunicam por meio de danças</li>
+          <li>Golfinhos têm nomes uns para os outros</li>
+          <li>O tardigrado sobrevive no vácuo do espaço</li>
+          <li>Elefantes reconhecem a si mesmos no espelho</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- DIV 3 — Imagem + Texto: Elefante -->
+    <div class="card">
+      <div class="card-img">
+        <img
+          src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=700&auto=format&fit=crop"
+          alt="Elefante africano na savana"
+        />
+        <span class="etiqueta etiqueta-dir">🐘 Gigante</span>
+      </div>
+      <div class="card-body">
+        <h2>O Guardião da Memória</h2>
+        <p>
+          Os elefantes são os maiores animais terrestres do planeta, podendo
+          chegar a <strong>7 toneladas</strong>. Sua memória prodigiosa lhes
+          permite lembrar rotas de migração e rostos de dezenas de anos atrás.
+        </p>
+        <p>
+          Eles usam <strong>infrassons</strong> — abaixo do alcance humano —
+          para se comunicar por quilômetros inteiros na savana.
+        </p>
+        <span class="info-chip">📍 África e Ásia</span>
+        <span class="info-chip">⚠️ Em perigo</span>
+      </div>
+    </div>
+
+  </main>
+
+
+  <!-- ============================
+       GALERIA EXTRA
+  ============================ -->
+  <section class="div-galeria">
+    <h2>Mais do Mundo Animal</h2>
+    <div class="galeria-grid">
+
+      <div class="galeria-item">
+        <img
+          src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=400&auto=format&fit=crop"
+          alt="Raposa vermelha na neve"
+        />
+        <div class="nome-animal"> Raposa</div>
+      </div>
+
+      <div class="galeria-item">
+        <img
+          src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=400&auto=format&fit=crop"
+          alt="Tartaruga marinha nadando"
+        />
+        <div class="nome-animal"> Tartaruga</div>
+      </div>
+
+      <div class="galeria-item">
+        <img
+          src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=400&auto=format&fit=crop"
+          alt="Pinguins na Antártica"
+        />
+        <div class="nome-animal"> Onça Pintada</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================
+       RODAPÉ
+  ============================ -->
+  <footer>
+    <p>
+      <strong>Mundo Animal</strong> · Projeto HTML &amp; CSS Responsivo || Autor - Anderson Ramos <br/>
+      Flexbox + Grid + Media Queries · Otimizado para <strong>375px</strong>
+    </p>
+  </footer>
+
+</body>
+</html>

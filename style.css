@@ -1,0 +1,549 @@
+/* ------------------------------------------------
+   VARIÁVEIS GLOBAIS
+------------------------------------------------ */
+:root {
+  --laranja:     #e8703a;
+  --laranja-esc: #c45a28;
+  --amarelo:     #f5c842;
+  --bege:        #fdf6ee;
+  --bege-esc:    #f0e5d4;
+  --marrom:      #4a2e1a;
+  --texto:       #2e1f0e;
+  --texto-suave: #7a5c42;
+  --branco:      #ffffff;
+  --sombra:      0 6px 28px rgba(74, 46, 26, 0.13);
+  --raio:        18px;
+}
+
+
+/* ------------------------------------------------
+   RESET & BASE
+------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bege);
+  font-family: 'Nunito', sans-serif;
+  color: var(--texto);
+  line-height: 1.7;
+}
+
+
+/* ------------------------------------------------
+   HEADER
+------------------------------------------------ */
+header {
+  background: var(--marrom);
+  color: var(--branco);
+  text-align: center;
+  padding: 2.8rem 1.5rem 3.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '🐾';
+  position: absolute;
+  font-size: 9rem;
+  opacity: 0.06;
+  top: -1rem;
+  left: -1rem;
+  pointer-events: none;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 45px;
+  background: var(--bege);
+  clip-path: ellipse(58% 100% at 50% 100%);
+}
+
+header h1 {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+header p {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  opacity: 0.7;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+
+/* ------------------------------------------------
+   DIV DESTAQUE (faixa laranja acima dos cards)
+------------------------------------------------ */
+.div-destaque {
+  background: linear-gradient(135deg, var(--laranja), var(--laranja-esc));
+  color: var(--branco);
+  border-radius: var(--raio);
+  padding: 2rem 2.2rem;
+  margin: 2.5rem auto 0;
+  max-width: 1100px;
+  width: calc(100% - 3rem);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  box-shadow: var(--sombra);
+}
+
+.div-destaque .icone {
+  font-size: 2.8rem;
+  flex-shrink: 0;
+}
+
+.div-destaque h2 {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  margin-bottom: 0.3rem;
+}
+
+.div-destaque p {
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+
+/* ------------------------------------------------
+   CONTAINER DAS 3 DIVS PRINCIPAIS
+   → flex-direction: row  em telas > 768px (lado a lado)
+   → flex-direction: column em telas ≤ 768px (empilhadas)
+------------------------------------------------ */
+.container-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1.4rem;
+  max-width: 1100px;
+  margin: 1.8rem auto;
+  padding: 0 1.5rem;
+}
+
+
+/* ------------------------------------------------
+   CARD BASE (as 3 divs principais)
+------------------------------------------------ */
+.card {
+  flex: 1;
+  background: var(--branco);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 44px rgba(74, 46, 26, 0.2);
+}
+
+
+/* ------------------------------------------------
+   IMAGENS DENTRO DOS CARDS
+------------------------------------------------ */
+.card-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+  max-width: 100%;      /* nunca ultrapassa a largura da tela */
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.card:hover .card-img img {
+  transform: scale(1.06);
+}
+
+.card-img .etiqueta {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--amarelo);
+  color: var(--marrom);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.8rem;
+  border-radius: 50px;
+}
+
+.card-img .etiqueta-dir {
+  left: auto;
+  right: 1rem;
+  background: var(--laranja);
+  color: var(--branco);
+}
+
+
+/* ------------------------------------------------
+   CORPO DO CARD (textos)
+------------------------------------------------ */
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-body h2 {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);   /* unidade relativa */
+  color: var(--marrom);
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.card-body p {
+  font-size: clamp(0.85rem, 1.8vw, 0.95rem);  /* unidade relativa */
+  color: var(--texto-suave);
+  line-height: 1.75;
+  margin-bottom: 0.8rem;
+}
+
+.card-body p:last-of-type {
+  margin-bottom: 0;
+}
+
+.info-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bege-esc);
+  color: var(--marrom);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  margin-top: 0.5rem;
+  margin-right: 0.3rem;
+}
+
+
+/* ------------------------------------------------
+   CARD DE TEXTO (div do meio — sem imagem)
+------------------------------------------------ */
+.card-texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-texto .card-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.numero-grande {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(3rem, 6vw, 4.5rem);  /* unidade relativa */
+  font-weight: 700;
+  color: var(--laranja);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.subtitulo-stat {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--marrom);
+  margin-bottom: 0.5rem;
+}
+
+blockquote {
+  border-left: 3px solid var(--laranja);
+  padding-left: 1rem;
+  font-style: italic;
+  color: var(--texto-suave);
+  font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+  line-height: 1.7;
+  margin: 1rem 0;
+}
+
+.lista-fatos {
+  list-style: none;
+  margin-top: 0.8rem;
+}
+
+.lista-fatos li {
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--bege-esc);
+  font-size: clamp(0.82rem, 1.8vw, 0.93rem);
+  color: var(--texto-suave);
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+
+.lista-fatos li:last-child {
+  border-bottom: none;
+}
+
+.lista-fatos li::before {
+  content: '▸';
+  color: var(--laranja);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+
+/* ------------------------------------------------
+   GALERIA DE IMAGENS (seção extra)
+------------------------------------------------ */
+.div-galeria {
+  max-width: 1100px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1.5rem;
+}
+
+.div-galeria h2 {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: var(--marrom);
+  margin-bottom: 1rem;
+  padding-left: 0.8rem;
+  border-left: 4px solid var(--laranja);
+}
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.galeria-item {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  box-shadow: var(--sombra);
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.galeria-item:hover img {
+  transform: scale(1.08);
+}
+
+.nome-animal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(74, 46, 26, 0.8));
+  color: var(--branco);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.6rem 0.8rem 0.5rem;
+}
+
+
+/* ------------------------------------------------
+   FOOTER
+------------------------------------------------ */
+footer {
+  background: var(--marrom);
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.85rem;
+}
+
+footer strong {
+  color: var(--branco);
+}
+
+
+/* ================================================
+   ★★★  MEDIA QUERIES — RESPONSIVIDADE  ★★★
+================================================ */
+
+
+/* ------------------------------------------------
+   TABLET — até 768px
+   As 3 divs passam de ROW para COLUMN (empilhadas)
+------------------------------------------------ */
+@media (max-width: 768px) {
+
+  .container-grid {
+    flex-direction: column;   /* empilha verticalmente */
+    padding: 0 1.2rem;
+    gap: 1.2rem;
+    margin: 1.5rem auto;
+  }
+
+  .card {
+    flex: none;
+    width: 100%;              /* ocupa toda a largura */
+  }
+
+  .card-img img {
+    height: 240px;
+    max-width: 100%;          /* nunca ultrapassa a tela */
+  }
+
+  .div-destaque {
+    width: calc(100% - 2.4rem);
+    margin-top: 1.8rem;
+  }
+
+  .div-galeria {
+    padding: 0 1.2rem;
+  }
+}
+
+
+/* ------------------------------------------------
+   CELULAR — até 480px
+------------------------------------------------ */
+@media (max-width: 480px) {
+
+  header {
+    padding: 2rem 1rem 2.5rem;
+  }
+
+  .container-grid {
+    padding: 0 1rem;
+    gap: 1rem;
+    margin: 1.2rem auto;
+  }
+
+  /* imagem se redimensiona proporcionalmente */
+  .card-img img {
+    width: 100%;
+    height: auto;             /* altura proporcional */
+    min-height: 180px;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: 1.2rem;
+  }
+
+  .galeria-grid {
+    grid-template-columns: repeat(2, 1fr);  /* 2 colunas em mobile */
+    gap: 0.8rem;
+  }
+
+  .div-destaque {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem 1.2rem;
+    width: calc(100% - 2rem);
+  }
+
+  .div-galeria {
+    padding: 0 1rem;
+  }
+}
+
+
+/* ------------------------------------------------
+   ★ FOCO PRINCIPAL: 375px (iPhone SE e similares)
+   Ajustes finos para a largura de 375px
+------------------------------------------------ */
+@media (max-width: 375px) {
+
+  header h1 {
+    font-size: 1.55rem;        /* rem = relativo ao root */
+  }
+
+  header p {
+    font-size: 0.78rem;
+  }
+
+  .container-grid {
+    padding: 0 0.8rem;
+    gap: 0.9rem;
+    margin: 1rem auto;
+  }
+
+  /* imagens proporcionais em 375px */
+  .card-img img {
+    min-height: 160px;
+    width: 100%;
+    max-width: 100%;           /* nunca extrapola a tela */
+    height: auto;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  /* tipografia legível em 375px com unidades relativas */
+  .card-body h2 {
+    font-size: 1.1rem;
+  }
+
+  .card-body p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .numero-grande {
+    font-size: 2.8rem;
+  }
+
+  .lista-fatos li {
+    font-size: 0.82rem;
+  }
+
+  .galeria-grid {
+    gap: 0.6rem;
+  }
+
+  .nome-animal {
+    font-size: 0.72rem;
+  }
+
+  .div-galeria {
+    padding: 0 0.8rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .div-destaque {
+    padding: 1.2rem 1rem;
+    gap: 0.8rem;
+  }
+
+  .div-destaque h2 {
+    font-size: 1rem;
+  }
+
+  .div-destaque p {
+    font-size: 0.83rem;
+  }
+
+  footer {
+    padding: 1.5rem 1rem;
+    font-size: 0.78rem;
+  }
+}
